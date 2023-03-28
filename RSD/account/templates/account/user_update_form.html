@@ -1,0 +1,12 @@
+{% extends 'account/index.html' %}
+{% load django_bootstrap5 %}
+{% block contentinner %}
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="margin-top-20">
+            {% bootstrap_button button_type="submit" content="Update" %}
+        </div>
+    </form>
+{% endblock contentinner %}
+    
