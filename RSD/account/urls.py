@@ -10,5 +10,6 @@ urlpatterns = [
     path('profile/',views.Profile.as_view(),name="profile"),
     path('update/<pk>',views.UserUpdateView.as_view(),name='update'),
     path('cities/',views.cities,name="cities"),
+    path('druglist/',views.druglist,name="druglist"),
     path('accept/',views.accept,name="accept"),
 ]

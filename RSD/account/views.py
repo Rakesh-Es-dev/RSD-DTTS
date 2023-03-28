@@ -24,11 +24,17 @@ class UserUpdateView(LoginRequiredMixin,generic.UpdateView):
     fields=['username','email']
     template_name = "account/user_update_form.html"
 
+def druglist(request):
+    client = fetch('68251993000010000','Modern@123','http://tandtwstest.sfda.gov.sa:8080/ws/DrugListService/DrugListService?wsdl')
+    drugs = client.service.getDrugList('1')
+    return render(request,'account/druglist.html',{'drugs':drugs})
 def accept(request):
-    client = fetch('68251993000010000','Modern@123','http://tandtwstest.sfda.gov.sa:8080/ws/AcceptService/AcceptService?wsdl')
-    accept = client.service.notifyAccept();
-    print(accept)
-    return render(request,'account/acceptRequest.html',{'accept':accept})
+    client = fetch('68251993000010000','Modern@123','http://tandtwstest.sfda.gov.sa:8080/ws/DrugListService/DrugListService?wsdl')
+    drugs = client.service.getDrugList('1')
+    client =fetch('68251993000010000','Modern@123', 'http://tandtwstest.sfda.gov.sa:8080/ws/AcceptService/AcceptService?wsdl')
+    for drug in drugs:
+        accept = client.service.notifyAccept(drug)
+        return render(request, 'account/acceptRequest.html',{'accept':accept})
 def cities(request):
     client = fetch('68251993000010000','Modern@123','http://tandtwstest.sfda.gov.sa:8080/ws/CityListService/CityListService?wsdl')
     citylist=client.service.getCityList();
