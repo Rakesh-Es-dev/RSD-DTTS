@@ -2,25 +2,10 @@
 {% load render_table from django_tables2 %}
 {% load querystring from django_tables2 %}
 {% block contentinner %}
-<div class="table-responsive">
-<table class="table">
-    <tr class="sticky-top">
-        <th>GTIN</th>
-        <th>Drug Name</th>
-        <th>Generic Name</th>
-        <th>Registration Number</th>
-        <th>Price</th>
-    </tr>
-{% for drug in drugs %}
-    <tr>
-        <td>{{drug.GTIN}}</td>
-        <td>{{drug.DRUGNAME}}</td>
-        <td>{{drug.GENERICNAME}}</td>
-        <td>{{drug.REGISTRATIONNUMBER}}</td>
-        <td>{{drug.PRICE}}</td>
+{% render_table table %}
 
-    </tr>
-{% endfor %}
-</table>
-</div>
+<a href="{% querystring '_export'='csv' %}">Download CSV</a>
+
+<a href="{% querystring '_export'='xlsx' %}">Download XLSX</a>
+<a href="{% querystring '_export'='pdf' %}">Download PDF</a>
 {% endblock contentinner %}
