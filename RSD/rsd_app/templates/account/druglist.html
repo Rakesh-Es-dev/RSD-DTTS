@@ -1,0 +1,44 @@
+{% extends 'account/index.html' %}
+{% block contentinner %}
+<div class="table-responsive">
+    <table id="myTable" class="table table-striped
+    table-hover	
+    table-bordered
+    table-secondary
+    align-middle">
+    <caption>Drugs</caption>
+
+        <thead class="table-dark">
+            <tr>
+                <th>GTIN</th>
+                <th>R.No</th>
+                <th>Name</th>
+                <th>Generic Name</th>
+                <th>Price</th>
+                <!-- <th>Suppliers</th> -->
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                
+                {% for drug in drugs %}
+                <tr class="table-primary" >
+                    <td >{{drug.gtin}}</td>
+                    <td>{{drug.registrationNumber}}</td>
+                    <td>{{drug.name}}</td>
+                    <td>{{drug.genericName}}</td>
+                    <td>{{drug.price}}</td>
+                    <!-- <td></td> -->
+                </tr>    
+                {% endfor %}
+                    
+                
+                
+            </tbody>
+            <tfoot>
+                
+            </tfoot>
+    </table>
+</div>
+
+
+{% endblock contentinner %}

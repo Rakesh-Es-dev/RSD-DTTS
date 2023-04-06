@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('',include('account.urls')),
+    path('',include('rsd_app.urls')),
     path('',include('django.contrib.auth.urls')),
 ]

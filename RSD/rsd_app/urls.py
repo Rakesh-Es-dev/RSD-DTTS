@@ -9,7 +9,9 @@ urlpatterns = [
     path('signup/',views.Signup.as_view(),name="signup"),
     path('profile/',views.Profile.as_view(),name="profile"),
     path('update/<pk>',views.UserUpdateView.as_view(),name='update'),
-    path('cities/',views.cities,name="cities"),
-    path('druglist/',views.druglist,name="druglist"),
+    path('cities/',views.citylistFromDB,name="cities"),
+    path('citiesRefresh/',views.cities,name="citiesRefresh"),
+    path('druglist/',views.druglistfromDB,name="druglist"),
+    path('druglistRefresh/',views.druglist,name="druglistRefresh"),
     path('accept/',views.accept,name="accept"),
 ]

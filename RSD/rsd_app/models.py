@@ -34,7 +34,7 @@ class Drugs(models.Model):
     drugStatus = models.BooleanField(null=True)
     importable = models.BooleanField(null=True)
     exportable = models.BooleanField(null=True)
-    registrationNumber = models.CharField(max_length=256)
+    registrationNumber = models.CharField(max_length=256,null=True)
     genericName = models.CharField(max_length=256,null=True)
     price = models.DecimalField(max_digits=256,decimal_places=3,null=True)
     dosage = models.CharField(max_length=256,null=True)
